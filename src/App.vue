@@ -1,5 +1,7 @@
 <script setup>
 import { reactive } from 'vue';
+import HeaderCalculator from './components/HeaderCalculator.vue';
+import FormCalculator from './components/FormCalculator.vue';
 
 const operationApp = reactive({
   number1: null,
@@ -71,9 +73,7 @@ const getOperationSymbol = (operation) => {
 
 <template>
   <div class="container">
-    <header class="p-5 mb-4 mt-4 bg-light rounded-3">
-      <h1>Calculator</h1>
-    </header>
+    <HeaderCalculator />
     <form @submit.prevent="calculateResult">
       <div class="row">
         <div class="col-md-2">
@@ -100,6 +100,16 @@ const getOperationSymbol = (operation) => {
         <span>{{ previousNumber1 }} {{ getOperationSymbol(operationApp.operation) }} {{ previousNumber2 }} = {{ operationApp.result !== null ? operationApp.result : '' }}</span>
       </div>
     </form>
+    <!-- <FormCalculator
+      :calculateResult="calculateResult"
+      :number1="operationApp.number1"
+      :number2="operationApp.number2"
+      :operation="operationApp.operation"
+      :previousNumber1="previousNumber1"
+      :previousNumber2="previousNumber2"
+      :getOperationSymbol="getOperationSymbol"
+      :result="operationApp.result"
+    /> -->
   </div>
 </template>
 
